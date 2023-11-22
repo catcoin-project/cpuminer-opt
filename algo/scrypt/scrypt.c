@@ -1441,6 +1441,22 @@ extern int scanhash_scrypt( struct work *work, uint32_t max_nonce,
 #endif
 
       // test the hash
+
+      if ( rc )
+      for ( i = 0; i < SCRYPT_THROUGHPUT; i++ )
+      {
+         // Invert scrypt hash number for scrypt-NAH
+         // hash + i*8
+         hash[i*8] = ~hash[i*8];
+         hash[i*8+1] = ~hash[i*8+1];
+         hash[i*8+2] = ~hash[i*8+2];
+         hash[i*8+3] = ~hash[i*8+3];
+         hash[i*8+4] = ~hash[i*8+4];
+         hash[i*8+5] = ~hash[i*8+5];
+         hash[i*8+6] = ~hash[i*8+6];
+         hash[i*8+7] = ~hash[i*8+7];
+      }
+	   
       if ( rc )
       for ( i = 0; i < SCRYPT_THROUGHPUT; i++ )
       {
